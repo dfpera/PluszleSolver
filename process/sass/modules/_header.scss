@@ -1,0 +1,136 @@
+/*! Add all header styles here */
+header {
+  @include column(1);
+  grid-column: span 7;
+  z-index: var(--zindex-header);
+
+  .logo {
+    @include column(1);
+    grid-column: span 7;
+
+    @include breakpoint(sm) {
+      @include column(2/7);
+      grid-column: span 2;
+    }
+
+    a {
+      text-align: center;
+      display: block;
+      margin-top: var(--space-sm);
+      font-size: var(--text-md);
+      letter-spacing: 1px;
+
+      &:first-letter {
+        color: var(--color-black);
+      }
+    }
+
+    @include breakpoint(sm) {
+      a {
+        text-align: left;
+        margin: var(--space-md) var(--space-md) var(--space-xs) var(--space-unit);
+      }
+    }
+  }
+
+  nav.main {
+    @include column(1);
+    grid-column: span 7;
+
+    @include breakpoint(sm) {
+      @include column(5/7);
+      grid-column: span 5;
+    }
+  }
+
+  > .banner {
+    background-image: url('/img/Background.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
+
+    > .intro {
+      &:before {
+        content: "\003E_";
+        letter-spacing: 1px;
+        padding: var(--space-xxxs) var(--space-sm);
+        margin-top: calc(-1 * var(--space-xs));
+        border-top-right-radius: var(--radius);
+        border-top-left-radius: var(--radius);
+        font-size: var(--text-sm);
+        font-family: var(--primary-font);
+        display: block;
+        background-color: var(--color-contrast-low);
+        color: var(--color-black);
+      }
+
+      margin: 0;
+      border-radius: var(--radius);
+      background-color: var(--color-primary-darker);
+      display: inline-block;
+      min-width: 40%;
+      color: var(--color-contrast-a45);
+      font-family: var(--font-secondary);
+      margin-top: 5.25em;
+      font-size: var(--text-md);
+      width: 100%;
+      @include column(1);
+      grid-column: span 7;
+
+      > h1,
+      > p {
+        padding: 0;
+        margin: 0 var(--space-xs);
+      }
+
+      > p > span,
+      > h1 {
+        font-weight: bold;
+        color: var(--color-white);
+      }
+
+      > p:first-child {
+        margin-top: var(--space-xs);
+      }
+
+      > p:last-child {
+        margin-bottom: var(--space-sm);
+      }
+
+      p {
+        line-height: 1.3;
+      }
+
+      > p.cursor {
+        position: relative;
+      }
+
+      > p.cursor:after {
+        content: "\25AE";
+        color: var(--color-white);
+        position: absolute;
+        bottom: 0.45em;
+        display: inline-block;
+        font-size: var(--text-md);
+        line-height: 0.4;
+      }
+    }
+  }
+}
+
+@include breakpoint(md) {
+  header {
+    > .banner {
+      min-height: 25.0em;
+
+      &.parallax-window {
+        background: transparent;
+      }
+
+      > .intro {
+        margin: 5.5em 0 auto 0;
+        @include column(3/7);
+        grid-column: 3 / span 4;
+      }
+    }
+  }
+}

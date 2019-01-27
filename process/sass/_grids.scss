@@ -1,0 +1,53 @@
+/*! Add all grid styles into this style sheet */
+* {
+  box-sizing: border-box;
+}
+
+.parent {
+  @include gridFallback(var(--space-md));
+
+  @supports (grid-area: auto) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: var(--space-md);
+  }
+}
+
+aside.breadcrumbs {
+  @include column(1);
+  grid-column: span 7;
+
+  @include breakpoint(sm) {
+    @include column(2/7);
+    grid-column: span 2;
+  }
+}
+
+article.mainContent {
+  @include column(1);
+  grid-column: span 7;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+
+  @include breakpoint(sm) {
+    @include column(4/7);
+    grid-column: span 4;
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+aside.specifications {
+  @include column(1);
+  grid-column: span 7;
+
+  @include breakpoint(sm) {
+    @include column(1/7);
+    grid-column: span 1;
+    grid-column-start: 7;
+    grid-column-end: 8;
+  }
+}

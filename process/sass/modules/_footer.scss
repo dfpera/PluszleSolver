@@ -1,0 +1,19 @@
+// /*! Add footer styles here */
+footer {
+  @include column(1);
+  grid-column: span 7;
+  height: 5.0rem;
+  width: 100%;
+
+  .links {
+    @include column(5/7);
+    grid-column: 2 / span 5;
+  }
+
+  @include breakpoint(sm) {
+    .links {
+      @include column(5/7);
+      grid-column: 3 / span 5;
+    }
+  }
+}

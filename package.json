@@ -1,0 +1,40 @@
+{
+  "name": "portfolio",
+  "version": "2.0.0",
+  "description": "## Description Individually, you will be developing a portfolio website. Unlike the prior projects which allowed for sites to link to false pages, **this website must be fully functional** (all links and content are real). The following content is required in the project:",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://dfpera@github.com/dfpera/Portfolio.git"
+  },
+  "author": "Daniele Perazzolo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dfpera/Portfolio/issues"
+  },
+  "homepage": "https://github.com/dfpera/Portfolio#readme",
+  "browserslist": "last 2 versions, > 5%, ie 9-11",
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^7.0.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "html-minifier": "^3.5.21",
+    "imagemin-pngcrush": "^6.0.0",
+    "postcss-calc": "^7.0.1",
+    "postcss-css-variables": "git+https://github.com/CodyHouse/postcss-css-variables"
+  },
+  "scripts": {
+    "test": "NODE_ENV=development gulp",
+    "start": "NODE_ENV=production gulp"
+  }
+}

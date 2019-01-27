@@ -1,0 +1,29 @@
+// /*! Add all base element styles into this style sheet */
+a {
+  font-family: var(--font-secondary);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.5s ease-out;
+
+  &:hover,
+  &:focus {
+    color: var(--color-black);
+  }
+}
+
+// img.img-responsive {
+//   width: 100%;
+//   padding-bottom: 1.0rem;
+// }
+
+// pre {
+//   border-top: $code-border;
+//   border-bottom: $code-border;
+// }
+
+// pre > code.hljs {
+//   background-color: map-get($white, $hex);
+//   background-color: map-get($white, $hsla);
+//   padding: 0.5rem 10%;
+//   width: 100%;
+// }
