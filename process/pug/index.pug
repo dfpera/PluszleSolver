@@ -1,88 +1,19 @@
 //- index.pug
-include modules/_head
-include modules/_header
-include modules/_breadcrumbs
-
 doctype html
 html
-  +head('Daniele Perazzolo')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Pluszle Solver
+    link(rel='stylesheet', href='/css/main.css')
+    script(src='/js/script.js' defer)
   body.parent
-    +header_home()
-    //- +breadcrumbs(
-    //-   ['#about', 'about'],
-    //-   ['#languages', 'languages'],
-    //-   ['#tools', 'tools'],
-    //-   ['#projects', 'projects']
-    //- )
-    article.mainContent.text-component
-      section#about.anchor
-        h3 about
-        p As a User Experience (UX) developer building mobile and web applications, Daniele strives to make the smoothest and easiest experience for users in any environment through understanding of both technology and design. It is not about tailoring the user to the product, but tailoring the product to its user. He completed his Computing Science Undergraduate at Simon Fraser University (SFU), with a Minor in Interactive Arts and Technology (specializing in User Experience).
-      section#languages.anchor
-        h3 languages
-        h4 frontend
-        p HTML5 (PugJS, HAML), CSS3 (SASS), Javascript, Regex
-        h4 backend
-        p Python, Ruby (Rails), PHP
-        h4 databases
-        p SQL, NoSQL
-        h4 mobile &amp; other
-        p Swift (iOS), Java (Android)
-      section#tools.anchor
-        h3 tools
-        h4 programming
-        p Bottle.py, RESTful web development, npm, git, gulp, Xcode, Visual Studio Code, jQuery, Bootstrap
-        h4 design
-        p User research, Personas, User scenarios, Affinity diagramming, Journey maps, Gorilla testing, Usability testing, Adobe (XD, Photoshop, Illustrator, InDesign), Axure RP
-      section#projects.anchor
-        h3 projects
-        .button-group.filter-button-group
-          button.active(data-filter='*') show all
-          //- button(data-filter='.stack') full-stack web
-          button(data-filter='.ux') ux design
-          button(data-filter='.front') front-end web
-          button(data-filter='.back') back-end web
-          button(data-filter='.mobile') android/ios
-        .projects
-          a.ux(href='/tennis', target='_blank')
-            img(src='img/all-court/Preview.png', alt='All Court Preview')
-            p.title All Court
-            p.sub app interface design, ux design
-          a.ux.mobile.front.back(href='https://www.sharperedgesolutions.com/online.php#!/page_e-books', target='_blank')
-            img(src='img/groundschool-anywhere/Preview.png', alt='Groundschool Anywhere Preview')
-            p.title groundschool anywhere
-            p.sub app interface design, ios app development
-          a.ux(href='makers-assist.html')
-            img(src='img/makers-assist/Preview.png', alt='Makers Assist Preview')
-            p.title makers assist
-            p.sub app interface design
-          //- a.front.ux(href='portfolio.html')
-          //-   img(src='img/portfolio/Preview.png', alt='Portfolio Preview')
-          //-   p.title Portfolio
-          //-   p.sub front-end web, ux design
-          //- a.stack.back(href='etextbook.html')
-          //-   img(src='img/noted/Preview.png', alt='Noted, Preview')
-          //-   p.title noted,
-          //-   p.sub full-stack web development, database, security, restful operations
-          a.mobile(href='etextbook.html')
-            img(src='img/etextbook/Preview.png', alt='eBooks Preview')
-            p.title etextbook
-            p.sub android app development
-          //- a.ux.front(href='etextbook.html')
-          //-   img(src='img/bubble-tea/Preview.png', alt='Bubble Tea Website Preview')
-          //-   p.title bubble tea website
-          //-   p.sub interface design, front-end web
-          //- a.stack.back(href='etextbook.html')
-          //-   img(src='img/restful/Preview.png', alt='RESTful Messages Preview')
-          //-   p.title RESTful messages
-          //-   p.sub back-end web, restful operations
-          //- a.front.ux(href='etextbook.html')
-          //-   img(src='img/websites/Preview.png', alt='Miscellaneous Websites Preview')
-          //-   p.title miscellaneous websites
-          //-   p.sub front-end web, seo, server maintenance
-          //- a.front(href='etextbook.html')
-          //-   img(src='img/data-visualization/Preview.png', alt='Data Visualization Preview')
-          //-   p.title data visualization
-          //-   p.sub front-end web, wireframe translation
-    include modules/_footer.pug
-    include modules/_scripts.pug
+    header
+      h1 Pluszle Solver
+    .solver
+
+
+    footer
+      p Check my other work at 
+        a(href='https://www.dpera.com', target='_blank') dpera.com
+        | .

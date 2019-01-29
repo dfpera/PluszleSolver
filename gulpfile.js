@@ -20,18 +20,12 @@ var
 var env,
     outputDir,
     // Src
-    assetsSrc,
-    batSrc,
-    fontsSrc,
     imgSrc,
     jsSrc,
     libSrc,
     pugSrc,
     sassSrc,
     // Dest
-    assetsDest,
-    batDest,
-    fontsDest,
     imgDest,
     jsDest,
     libDest,
@@ -61,14 +55,9 @@ if (env==='development') {
 }
 
 // Initialize sources
-assetsSrc = ['process/assets/**/*.*'];
-batSrc    = ['process/bat/*.php'];
-fontsSrc  = ['process/fonts/*.*'];
 imgSrc    = ['process/img/**/*.*'];
 jsSrc     = [
-              'process/js/util-framework.js',
-              'process/js/forms.js',
-              'process/js/main.js'
+              'process/js/script.js'
             ];
 libSrc    = ['process/lib/**/*.*'];
 pugSrc    = [
@@ -78,29 +67,11 @@ pugSrc    = [
 sassSrc   = ['process/sass/main.scss'];
 
 // Initialize destinations
-assetsDest  = outputDir + 'assets';
-batDest     = outputDir + 'bat';
-fontsDest   = outputDir + 'fonts';
 imgDest     = outputDir + 'img';
 jsDest      = outputDir + 'js';
 libDest     = outputDir + 'lib';
 pugDest     = outputDir;
 sassDest    = outputDir + 'css';
-
-gulp.task('assets', function() {
-  return gulp.src(assetsSrc)
-    .pipe(gulp.dest(assetsDest));
-});
-
-gulp.task('bat', function() {
-  return gulp.src(batSrc)
-    .pipe(gulp.dest(batDest));
-});
-
-gulp.task('fonts', function() {
-  return gulp.src(fontsSrc)
-    .pipe(gulp.dest(fontsDest));
-});
 
 gulp.task('img', function() {
   return gulp.src(imgSrc)
@@ -115,7 +86,7 @@ gulp.task('img', function() {
 
 gulp.task('js', function() {
   return gulp.src(jsSrc)
-    .pipe(concat('main.js'))
+    .pipe(concat('script.js'))
     .pipe(gulpif(env === 'production', uglify()))
     .pipe(gulp.dest(jsDest))
 });
@@ -156,18 +127,12 @@ function reloadPage(done) {
   browserSync.reload();
   done();
 }
-gulp.task('assets-rl', ['assets'], reloadPage);
-gulp.task('bat-rl', ['bat'], reloadPage);
-gulp.task('fonts-rl', ['fonts'], reloadPage);
 gulp.task('img-rl', ['img'], reloadPage);
 gulp.task('js-rl', ['js'], reloadPage);
 gulp.task('lib-rl', ['lib'], reloadPage);
 gulp.task('pug-rl', ['pug'], reloadPage);
 
-gulp.task('watch', ['browserSync', 'assets', 'bat', 'fonts', 'img', 'js', 'lib', 'pug', 'sass'], function () {
-  gulp.watch(assetsSrc, ['assets-rl']);
-  gulp.watch(batSrc, ['bat-rl']);
-  gulp.watch(fontsSrc, ['fonts-rl']);
+gulp.task('watch', ['browserSync', 'img', 'js', 'lib', 'pug', 'sass'], function () {
   gulp.watch(imgSrc, ['img-rl']);
   gulp.watch(jsSrc, ['js-rl']);
   gulp.watch(libSrc, ['lib-rl']);
