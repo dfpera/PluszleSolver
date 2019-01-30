@@ -57,6 +57,8 @@ if (env==='development') {
 // Initialize sources
 imgSrc    = ['process/img/**/*.*'];
 jsSrc     = [
+              'process/js/solver.js',
+              'process/js/handlers.js',
               'process/js/script.js'
             ];
 libSrc    = ['process/lib/**/*.*'];

@@ -1,0 +1,72 @@
+.board-three {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 25%;
+  }
+}
+
+.board-four {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 20%;
+  }
+}
+
+.board-five {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 16.66%;
+  }
+}
+
+.board-six {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 14.28%;
+  }
+}
+
+.board-seven {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 12.5%;
+  }
+}
+
+.board-eight {
+  display: none;
+  input,
+  button {
+    float: left;
+    width: 11.11%;
+  }
+}
+
+.board-three, 
+.board-four, 
+.board-five,
+.board-six,
+.board-seven,
+.board-eight {
+  &.show {
+    display: block;
+  }
+
+  .column,
+  .row {
+    border: var(--color-primary-dark) solid 2px;
+  }
+  .highlight {
+    background: var(--color-accent-light);
+  }
+}

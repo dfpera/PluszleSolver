@@ -11,7 +11,42 @@ html
     header
       h1 Pluszle Solver
     .solver
-
+      .grid
+        button.btn.btn--md.col--2.three 3x3
+        button.btn.btn--md.col--2.four 4x4
+        button.btn.btn--md.col--2.five 5x5
+        button.btn.btn--md.col--2.six 6x6
+        button.btn.btn--md.col--2.seven 7x7
+        button.btn.btn--md.col--2.eight 8x8
+      .board-three.show
+        - for (var x = 0; x < 3*5; x++)
+          - if (x >= 3*5-3)
+            input.form-control.column
+          - else if (x % 4 == 3)
+            input.form-control.row
+          - else
+            input.form-control.num
+        button.btn.btn--md Solve
+      .board-four
+        - for (var x = 0; x < 4*6; x++)
+          input.form-control
+        button.btn.btn--md Solve
+      .board-five
+        - for (var x = 0; x < 5*7; x++)
+          input.form-control
+        button.btn.btn--md Solve
+      .board-six
+        - for (var x = 0; x < 6*8; x++)
+          input.form-control
+        button.btn.btn--md Solve
+      .board-seven
+        - for (var x = 0; x < 7*9; x++)
+          input.form-control
+        button.btn.btn--md Solve
+      .board-eight
+        - for (var x = 0; x < 8*10; x++)
+          input.form-control
+        button.btn.btn--md Solve
 
     footer
       p Check my other work at 

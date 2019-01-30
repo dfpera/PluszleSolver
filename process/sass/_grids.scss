@@ -13,6 +13,13 @@
   }
 }
 
+.solver {
+  @include column(1);
+  grid-column: span 7;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
 aside.breadcrumbs {
   @include column(1);
   grid-column: span 7;
