@@ -184,6 +184,32 @@ class Grid {
     return result;
   }
 
+  getCommonValues(values, solutions) {
+    var posValues = values.slice();
+    for (let i = 0; i < values.length; i++) {
+      for (let k = 0; k < solutions.length; k++) {
+        if (solutions[k].indexOf(values[i]) === -1) {
+          posValues.splice(posValues.indexOf(values[i]), 1);
+          break;
+        }
+      }
+    }
+    return posValues;
+  }
+
+  getUncommonValues(values, solutions) {
+    var posValues = values.slice();
+    for (let i = 0; i < solutions.length; i++) {
+      for (let k = 0; k < solutions[i].length; k++) {
+        var position = posValues.indexOf(solutions[i][k]);
+        if (position > -1) {
+          posValues.splice(position, 1);
+        }
+      }
+    }
+    return posValues;
+  }
+
   solveGrid() {
     while(!this.isSolved()) {
       // Solve Rows
@@ -249,6 +275,12 @@ class Grid {
         } else if (sumArr.length == 0 && this.getRowIndices(y).length > 0) {
           console.log("Error: no possible solution.");
           return null;
+        } else {
+          var indexArr = this.getRowIndices(y);
+          // Remove commonly missing from possible solutions
+          this.remove(this.getUncommonValues(indexArr, sumArr));
+          // Add common number from possible solutions
+          this.add(this.getCommonValues(indexArr, sumArr));
         }
       }
 
@@ -315,10 +347,14 @@ class Grid {
         } else if (sumArr.length == 0 && this.getColumnIndices(x).length > 0) {
           console.log("Error: no possible solution.");
           return null;
+        } else {
+          var indexArr = this.getColumnIndices(x);
+          // Remove commonly missing from possible solutions
+          this.remove(this.getUncommonValues(indexArr, sumArr));
+          // Add common number from possible solutions
+          this.add(this.getCommonValues(indexArr, sumArr));
         }
       }
-      // TODO: Remove break
-      //break;
     }
     return this.result;
   }
@@ -341,32 +377,10 @@ class Grid {
 
 var grid = new Grid(
   [
-    1, 8, 4,
-    2, 9, 1,
-    1, 7, 4
+    2, 3, 3, 5, 6, 6, 3, 5, 4, 8, 3, 6, 5, 5, 4, 8, 5, 1, 9, 3, 6, 5, 5, 9, 8, 5, 9, 4, 4, 6, 6, 2, 8, 3, 6, 2
   ],
-  [4, 2, 8],
-  [3, 7, 4]
-);
-var result = grid.solveGrid();
-console.log(grid);
-console.log("==== GRID ====");
-grid.print(grid.grid);
-console.log("==== RESULT ====");
-grid.print(grid.result);
-
-var grid = new Grid(
-  [
-    6, 8, 5, 3, 6, 9, 5,
-    2, 7, 1, 3, 1, 1, 3,
-    8, 9, 8, 3, 7, 9, 2,
-    3, 1, 6, 1, 5, 2, 4,
-    8, 5, 7, 9, 4, 3, 6,
-    8, 8, 2, 8, 9, 5, 7,
-    1, 3, 4, 9, 1, 6, 5
-  ],
-  [33, 6, 36, 20, 14, 16, 17],
-  [12, 22, 22, 15, 22, 34, 15]
+  [19, 3, 22, 11, 27, 22],
+  [24, 5, 27, 18, 16, 14]
 );
 var result = grid.solveGrid();
 console.log(grid);
