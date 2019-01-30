@@ -12,17 +12,16 @@ class Grid {
     this.rowGoal = rowGoal;
     this.columnGoal = columnGoal;
 
-    this.curRowGoal = rowGoal;
-    this.curColumnGoal = columnGoal;
+    this.curRowGoal = rowGoal.slice();
+    this.curColumnGoal = columnGoal.slice();
     this.xLength = columnGoal.length;
     this.yLength = rowGoal.length;
     this.result = Array(this.xLength*this.yLength).fill(null);
-    console.log(this);
   }
 
   getCoords(index) {
     return {
-      x: index%this.xLength-1,
+      x: index%this.xLength,
       y: Math.floor(index/this.yLength)
     };
   }
@@ -69,7 +68,7 @@ class Grid {
     }
 
     // Compare results
-    if (rowSums === this.rowGoal && columnSums === this.columnGoal) {
+    if (rowSums.join() === this.rowGoal.join() && columnSums.join() === this.columnGoal.join()) {
       return true;
     } else {
       return false;
@@ -124,7 +123,7 @@ class Grid {
     var indexArr = [];
     for (let y = 0; y < this.yLength; y++) {
       var curNumIndex = this.getIndex({x: x, y: y});
-      if (this.grid[curNUmIndex]) {
+      if (this.grid[curNumIndex]) {
         indexArr.push(curNumIndex);
       }
     }
@@ -144,7 +143,7 @@ class Grid {
 
   getOddColumnIndices(x) {
     var indexArr = [];
-    for (let y = 0; x < this.yLength; y++) {
+    for (let y = 0; y < this.yLength; y++) {
       var curNumIndex = this.getIndex({x: x, y: y});
       if (this.grid[curNumIndex] && this.grid[curNumIndex]%2 == 1) {
         indexArr.push(curNumIndex);
@@ -163,7 +162,6 @@ class Grid {
 
   sumRowCombos(y, goal) {
     var indexArr = this.getRowIndices(y);
-    console.log(indexArr);
     var possibleSums = getAllSubsets(indexArr);
     var result = [];
     for (let i = 0; i < possibleSums.length; i++) {
@@ -176,7 +174,6 @@ class Grid {
 
   sumColumnCombos(x, goal) {
     var indexArr = this.getColumnIndices(x);
-    console.log(indexArr);
     var possibleSums = getAllSubsets(indexArr);
     var result = [];
     for (let i = 0; i < possibleSums.length; i++) {
@@ -216,9 +213,8 @@ class Grid {
             if (this.grid[curNumIndex]) {
               removeArr.push(curNumIndex);
             }
-
-            this.remove(removeArr);
           }
+          this.remove(removeArr);
         }
 
         // Add unused numbers when all unused numbers already removed
@@ -230,9 +226,8 @@ class Grid {
             if (this.grid[curNumIndex]) {
               addArr.push(curNumIndex);
             }
-
-            this.add(addArr);
           }
+          this.add(addArr);
         }
 
         // Count odds
@@ -251,7 +246,7 @@ class Grid {
 
         if (sumArr.length == 1) {
           this.add(sumArr[0]);
-        } else if (sumArr.length == 0) {
+        } else if (sumArr.length == 0 && this.getRowIndices(y).length > 0) {
           console.log("Error: no possible solution.");
           return null;
         }
@@ -284,9 +279,8 @@ class Grid {
             if (this.grid[curNumIndex]) {
               removeArr.push(curNumIndex);
             }
-
-            this.remove(removeArr);
           }
+          this.remove(removeArr);
         }
 
         // Add unused numbers when all unused numbers already removed
@@ -298,9 +292,8 @@ class Grid {
             if (this.grid[curNumIndex]) {
               addArr.push(curNumIndex);
             }
-
-            this.add(addArr);
           }
+          this.add(addArr);
         }
 
         // Count odds
@@ -315,17 +308,17 @@ class Grid {
         }
 
         // Check sum combinations
-        var sumArr = this.sumColumnCombos(y, this.getCurColumnGoal(y));
+        var sumArr = this.sumColumnCombos(x, this.getCurColumnGoal(x));
 
         if (sumArr.length == 1) {
           this.add(sumArr[0]);
-        } else if (sumArr.length == 0) {
+        } else if (sumArr.length == 0 && this.getColumnIndices(x).length > 0) {
           console.log("Error: no possible solution.");
           return null;
         }
       }
       // TODO: Remove break
-      break;
+      //break;
     }
     return this.result;
   }
@@ -348,6 +341,22 @@ class Grid {
 
 var grid = new Grid(
   [
+    1, 8, 4,
+    2, 9, 1,
+    1, 7, 4
+  ],
+  [4, 2, 8],
+  [3, 7, 4]
+);
+var result = grid.solveGrid();
+console.log(grid);
+console.log("==== GRID ====");
+grid.print(grid.grid);
+console.log("==== RESULT ====");
+grid.print(grid.result);
+
+var grid = new Grid(
+  [
     6, 8, 5, 3, 6, 9, 5,
     2, 7, 1, 3, 1, 1, 3,
     8, 9, 8, 3, 7, 9, 2,
@@ -361,5 +370,7 @@ var grid = new Grid(
 );
 var result = grid.solveGrid();
 console.log(grid);
+console.log("==== GRID ====");
 grid.print(grid.grid);
+console.log("==== RESULT ====");
 grid.print(grid.result);
