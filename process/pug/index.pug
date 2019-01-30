@@ -29,23 +29,48 @@ html
         button.btn.btn--md Solve
       .board-four
         - for (var x = 0; x < 4*6; x++)
-          input.form-control
+          - if (x >= 4*6-4)
+            input.form-control.column
+          - else if (x % 5 == 4)
+            input.form-control.row
+          - else
+            input.form-control.num
         button.btn.btn--md Solve
       .board-five
         - for (var x = 0; x < 5*7; x++)
-          input.form-control
+          - if (x >= 5*7-5)
+            input.form-control.column
+          - else if (x % 6 == 5)
+            input.form-control.row
+          - else
+            input.form-control.num
         button.btn.btn--md Solve
       .board-six
         - for (var x = 0; x < 6*8; x++)
-          input.form-control
+          - if (x >= 6*8-6)
+            input.form-control.column
+          - else if (x % 7 == 6)
+            input.form-control.row
+          - else
+            input.form-control.num
         button.btn.btn--md Solve
       .board-seven
         - for (var x = 0; x < 7*9; x++)
-          input.form-control
+          - if (x >= 7*9-7)
+            input.form-control.column
+          - else if (x % 8 == 7)
+            input.form-control.row
+          - else
+            input.form-control.num
         button.btn.btn--md Solve
       .board-eight
         - for (var x = 0; x < 8*10; x++)
-          input.form-control
+          - if (x >= 8*10-8)
+            input.form-control.column
+          - else if (x % 9 == 8)
+            input.form-control.row
+          - else
+            input.form-control.num
         button.btn.btn--md Solve
 
     footer
